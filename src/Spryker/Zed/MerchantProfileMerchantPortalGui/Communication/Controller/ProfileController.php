@@ -68,7 +68,6 @@ class ProfileController extends AbstractController
             return;
         }
 
-        /** @var \Generated\Shared\Transfer\MerchantTransfer $merchantTransfer */
         $merchantTransfer = $merchantForm->getData();
 
         $merchantResponseTransfer = $this->getFactory()
