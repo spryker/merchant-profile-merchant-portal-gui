@@ -194,6 +194,7 @@ class OnlineProfileMerchantProfileForm extends AbstractType
             'constraints' => $this->getTextFieldConstraints(),
             'required' => false,
             'property_path' => 'merchantProfile.publicPhone',
+            'sanitize_xss' => true,
         ]);
 
         return $this;
@@ -214,6 +215,7 @@ class OnlineProfileMerchantProfileForm extends AbstractType
                 'placeholder' => static::PLACEHOLDER_LOGO_URL,
             ],
             'property_path' => 'merchantProfile.logoUrl',
+            'sanitize_xss' => true,
         ]);
 
         return $this;

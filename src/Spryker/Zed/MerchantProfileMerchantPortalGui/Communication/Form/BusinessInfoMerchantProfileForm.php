@@ -198,6 +198,7 @@ class BusinessInfoMerchantProfileForm extends AbstractType
             ],
             'required' => true,
             'property_path' => 'merchantProfile.contactPersonFirstName',
+            'sanitize_xss' => true,
         ]);
 
         return $this;
@@ -219,6 +220,7 @@ class BusinessInfoMerchantProfileForm extends AbstractType
             ],
             'required' => true,
             'property_path' => 'merchantProfile.contactPersonLastName',
+            'sanitize_xss' => true,
         ]);
 
         return $this;
@@ -236,6 +238,7 @@ class BusinessInfoMerchantProfileForm extends AbstractType
             'constraints' => $this->getTextFieldConstraints(),
             'required' => false,
             'property_path' => 'merchantProfile.contactPersonRole',
+            'sanitize_xss' => true,
         ]);
 
         return $this;
@@ -254,6 +257,7 @@ class BusinessInfoMerchantProfileForm extends AbstractType
                 $this->createNotBlankConstraint(),
                 $this->createLengthConstraint(),
             ],
+            'sanitize_xss' => true,
         ]);
 
         return $this;
@@ -272,6 +276,7 @@ class BusinessInfoMerchantProfileForm extends AbstractType
             'constraints' => [
                 new Length(['max' => 255]),
             ],
+            'sanitize_xss' => true,
         ]);
 
         return $this;
@@ -333,6 +338,7 @@ class BusinessInfoMerchantProfileForm extends AbstractType
             'constraints' => $this->getTextFieldConstraints(),
             'required' => false,
             'property_path' => 'merchantProfile.contactPersonPhone',
+            'sanitize_xss' => true,
         ]);
 
         return $this;
