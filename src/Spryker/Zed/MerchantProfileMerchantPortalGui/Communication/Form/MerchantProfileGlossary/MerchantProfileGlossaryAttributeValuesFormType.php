@@ -164,7 +164,6 @@ class MerchantProfileGlossaryAttributeValuesFormType extends AbstractType
             'constraints' => $this->getTextareaConstrains(),
             'sanitize_xss' => true,
             'allowed_attributes' => ['style'],
-            'allowed_html_tags' => ['iframe'],
         ]);
 
         return $this;
@@ -184,8 +183,6 @@ class MerchantProfileGlossaryAttributeValuesFormType extends AbstractType
             ],
             'required' => false,
             'sanitize_xss' => true,
-            'allowed_attributes' => ['style'],
-            'allowed_html_tags' => ['iframe'],
         ]);
 
         return $this;
