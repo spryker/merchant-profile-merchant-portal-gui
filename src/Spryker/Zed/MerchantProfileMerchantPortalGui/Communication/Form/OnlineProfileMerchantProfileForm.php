@@ -177,6 +177,7 @@ class OnlineProfileMerchantProfileForm extends AbstractType
                 new Length(['max' => 255]),
             ],
             'property_path' => 'merchantProfile.publicEmail',
+            'sanitize_xss' => true,
         ]);
 
         return $this;

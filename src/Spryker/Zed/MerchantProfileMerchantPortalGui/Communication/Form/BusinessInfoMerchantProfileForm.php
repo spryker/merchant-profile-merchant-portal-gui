@@ -293,6 +293,7 @@ class BusinessInfoMerchantProfileForm extends AbstractType
             'label' => static::LABEL_EMAIL,
             'required' => true,
             'constraints' => $this->getEmailFieldConstraints($this->getCurrentIdFromFormData($builder)),
+            'sanitize_xss' => true,
         ]);
 
         return $this;
