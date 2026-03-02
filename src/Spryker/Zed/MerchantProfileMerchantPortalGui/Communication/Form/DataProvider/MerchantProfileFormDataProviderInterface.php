@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\MerchantTransfer;
 
 interface MerchantProfileFormDataProviderInterface
 {
-    /**
-     * @param int $idMerchant
-     *
-     * @return \Generated\Shared\Transfer\MerchantTransfer|null
-     */
     public function findMerchantById(int $idMerchant): ?MerchantTransfer;
 }

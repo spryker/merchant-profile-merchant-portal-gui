@@ -21,17 +21,11 @@ class UniqueEmail extends SymfonyConstraint
      */
     protected ?int $currentIdMerchant;
 
-    /**
-     * @return int|null
-     */
     public function getCurrentIdMerchant(): ?int
     {
         return $this->currentIdMerchant;
     }
 
-    /**
-     * @return string
-     */
     public function getTargets(): string
     {
         return static::CLASS_CONSTRAINT;

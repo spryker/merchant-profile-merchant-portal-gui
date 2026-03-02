@@ -13,17 +13,7 @@ use Generated\Shared\Transfer\MerchantTransfer;
 
 interface MerchantProfileMerchantPortalGuiToMerchantFacadeInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\MerchantTransfer $merchantTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantResponseTransfer
-     */
     public function updateMerchant(MerchantTransfer $merchantTransfer): MerchantResponseTransfer;
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantCriteriaTransfer $merchantCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantTransfer|null
-     */
     public function findOne(MerchantCriteriaTransfer $merchantCriteriaTransfer): ?MerchantTransfer;
 }

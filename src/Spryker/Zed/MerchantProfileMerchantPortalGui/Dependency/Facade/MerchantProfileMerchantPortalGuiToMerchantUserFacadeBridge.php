@@ -24,9 +24,6 @@ class MerchantProfileMerchantPortalGuiToMerchantUserFacadeBridge implements Merc
         $this->merchantUserFacade = $merchantUserFacade;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\MerchantUserTransfer
-     */
     public function getCurrentMerchantUser(): MerchantUserTransfer
     {
         return $this->merchantUserFacade->getCurrentMerchantUser();

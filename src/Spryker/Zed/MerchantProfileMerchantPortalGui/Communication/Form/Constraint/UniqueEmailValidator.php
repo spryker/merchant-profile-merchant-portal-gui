@@ -58,11 +58,6 @@ class UniqueEmailValidator extends AbstractConstraintValidator
             ->addViolation();
     }
 
-    /**
-     * @param string $email
-     *
-     * @return \Generated\Shared\Transfer\MerchantTransfer|null
-     */
     protected function findMerchantByEmail(string $email): ?MerchantTransfer
     {
         $merchantCriteriaTransfer = new MerchantCriteriaTransfer();

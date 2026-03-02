@@ -11,17 +11,7 @@ use Generated\Shared\Transfer\UrlTransfer;
 
 interface MerchantProfileMerchantPortalGuiToUrlFacadeInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     *
-     * @return bool
-     */
     public function hasUrlCaseInsensitive(UrlTransfer $urlTransfer): bool;
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer|null
-     */
     public function findUrlCaseInsensitive(UrlTransfer $urlTransfer): ?UrlTransfer;
 }

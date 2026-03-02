@@ -11,8 +11,5 @@ use Generated\Shared\Transfer\CountryCollectionTransfer;
 
 interface MerchantProfileMerchantPortalGuiToCountryFacadeInterface
 {
-    /**
-     * @return \Generated\Shared\Transfer\CountryCollectionTransfer
-     */
     public function getAvailableCountries(): CountryCollectionTransfer;
 }

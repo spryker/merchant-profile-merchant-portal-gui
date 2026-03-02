@@ -40,9 +40,6 @@ class MerchantProfileMerchantPortalGuiCommunicationFactory extends AbstractCommu
         return $this->getFormFactory()->create(MerchantProfileForm::class, $data, $options);
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProfileMerchantPortalGui\Communication\Form\DataProvider\MerchantProfileFormDataProviderInterface
-     */
     public function createMerchantProfileFormDataProvider(): MerchantProfileFormDataProviderInterface
     {
         return new MerchantProfileFormDataProvider(
@@ -53,65 +50,41 @@ class MerchantProfileMerchantPortalGuiCommunicationFactory extends AbstractCommu
         );
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProfileMerchantPortalGui\Communication\Form\DataProvider\MerchantProfileAddressFormDataProviderInterface
-     */
     public function createMerchantProfileAddressFormDataProvider(): MerchantProfileAddressFormDataProviderInterface
     {
         return new MerchantProfileAddressFormDataProvider($this->getCountryFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProfileMerchantPortalGui\Communication\Form\Constraint\UniqueUrl
-     */
     public function createUniqueUrlConstraint(): UniqueUrl
     {
         return new UniqueUrl();
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToMerchantFacadeInterface
-     */
     public function getMerchantFacade(): MerchantProfileMerchantPortalGuiToMerchantFacadeInterface
     {
         return $this->getProvidedDependency(MerchantProfileMerchantPortalGuiDependencyProvider::FACADE_MERCHANT);
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToMerchantUserFacadeInterface
-     */
     public function getMerchantUserFacade(): MerchantProfileMerchantPortalGuiToMerchantUserFacadeInterface
     {
         return $this->getProvidedDependency(MerchantProfileMerchantPortalGuiDependencyProvider::FACADE_MERCHANT_USER);
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToGlossaryFacadeInterface
-     */
     public function getGlossaryFacade(): MerchantProfileMerchantPortalGuiToGlossaryFacadeInterface
     {
         return $this->getProvidedDependency(MerchantProfileMerchantPortalGuiDependencyProvider::FACADE_GLOSSARY);
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToLocaleFacadeInterface
-     */
     public function getLocaleFacade(): MerchantProfileMerchantPortalGuiToLocaleFacadeInterface
     {
         return $this->getProvidedDependency(MerchantProfileMerchantPortalGuiDependencyProvider::FACADE_LOCALE);
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToUrlFacadeInterface
-     */
     public function getUrlFacade(): MerchantProfileMerchantPortalGuiToUrlFacadeInterface
     {
         return $this->getProvidedDependency(MerchantProfileMerchantPortalGuiDependencyProvider::FACADE_URL);
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToCountryFacadeInterface
-     */
     public function getCountryFacade(): MerchantProfileMerchantPortalGuiToCountryFacadeInterface
     {
         return $this->getProvidedDependency(MerchantProfileMerchantPortalGuiDependencyProvider::FACADE_COUNTRY);

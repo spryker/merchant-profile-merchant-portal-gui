@@ -125,9 +125,6 @@ class BusinessInfoMerchantProfileForm extends AbstractType
      */
     protected const PATTERN_LAST_NAME = '/^[^:\/<>]+$/';
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return 'businessInfoMerchantProfile';
@@ -344,25 +341,16 @@ class BusinessInfoMerchantProfileForm extends AbstractType
         ];
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraints\NotBlank
-     */
     protected function createNotBlankConstraint(): NotBlank
     {
         return new NotBlank();
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraints\Length
-     */
     protected function createLengthConstraint(): Length
     {
         return new Length(['max' => 255]);
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraints\Regex
-     */
     protected function createFirstNameRegexConstraint(): Regex
     {
         return new Regex([
@@ -370,9 +358,6 @@ class BusinessInfoMerchantProfileForm extends AbstractType
         ]);
     }
 
-    /**
-     * @return \Symfony\Component\Validator\Constraints\Regex
-     */
     protected function createLastNameRegexConstraint(): Regex
     {
         return new Regex([

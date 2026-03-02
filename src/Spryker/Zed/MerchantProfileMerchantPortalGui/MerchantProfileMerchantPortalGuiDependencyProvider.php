@@ -56,11 +56,6 @@ class MerchantProfileMerchantPortalGuiDependencyProvider extends AbstractBundleD
      */
     public const PLUGINS_ONLINE_PROFILE_MERCHANT_PROFILE_FORM_EXPANDER = 'PLUGINS_ONLINE_PROFILE_MERCHANT_PROFILE_FORM_EXPANDER';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = parent::provideCommunicationLayerDependencies($container);
@@ -76,11 +71,6 @@ class MerchantProfileMerchantPortalGuiDependencyProvider extends AbstractBundleD
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addMerchantFacade(Container $container): Container
     {
         $container->set(static::FACADE_MERCHANT, function (Container $container) {
@@ -90,11 +80,6 @@ class MerchantProfileMerchantPortalGuiDependencyProvider extends AbstractBundleD
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addMerchantUserFacade(Container $container): Container
     {
         $container->set(static::FACADE_MERCHANT_USER, function (Container $container) {
@@ -104,11 +89,6 @@ class MerchantProfileMerchantPortalGuiDependencyProvider extends AbstractBundleD
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addGlossaryFacade(Container $container): Container
     {
         $container->set(static::FACADE_GLOSSARY, function (Container $container) {
@@ -118,11 +98,6 @@ class MerchantProfileMerchantPortalGuiDependencyProvider extends AbstractBundleD
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addLocaleFacade(Container $container): Container
     {
         $container->set(static::FACADE_LOCALE, function (Container $container) {
@@ -132,11 +107,6 @@ class MerchantProfileMerchantPortalGuiDependencyProvider extends AbstractBundleD
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addUrlFacade(Container $container): Container
     {
         $container->set(static::FACADE_URL, function (Container $container) {
@@ -146,11 +116,6 @@ class MerchantProfileMerchantPortalGuiDependencyProvider extends AbstractBundleD
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addCountryFacade(Container $container): Container
     {
         $container->set(static::FACADE_COUNTRY, function (Container $container) {
@@ -160,11 +125,6 @@ class MerchantProfileMerchantPortalGuiDependencyProvider extends AbstractBundleD
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addOnlineProfileMerchantProfileFormExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_ONLINE_PROFILE_MERCHANT_PROFILE_FORM_EXPANDER, function (Container $container) {

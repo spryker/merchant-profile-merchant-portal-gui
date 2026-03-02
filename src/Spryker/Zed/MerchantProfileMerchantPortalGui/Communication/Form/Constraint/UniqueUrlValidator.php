@@ -57,11 +57,6 @@ class UniqueUrlValidator extends AbstractConstraintValidator
         }
     }
 
-    /**
-     * @param string $url
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer|null
-     */
     protected function findExistingUrl(string $url): ?UrlTransfer
     {
         $urlTransfer = $this->createUrlTransfer($url);
@@ -69,11 +64,6 @@ class UniqueUrlValidator extends AbstractConstraintValidator
         return $this->getFactory()->getUrlFacade()->findUrlCaseInsensitive($urlTransfer);
     }
 
-    /**
-     * @param string $url
-     *
-     * @return bool
-     */
     protected function hasUrlCaseInsensitive(string $url): bool
     {
         $urlTransfer = $this->createUrlTransfer($url);
@@ -81,11 +71,6 @@ class UniqueUrlValidator extends AbstractConstraintValidator
         return $this->getFactory()->getUrlFacade()->hasUrlCaseInsensitive($urlTransfer);
     }
 
-    /**
-     * @param string $url
-     *
-     * @return \Generated\Shared\Transfer\UrlTransfer
-     */
     protected function createUrlTransfer(string $url): UrlTransfer
     {
         $urlTransfer = new UrlTransfer();
@@ -94,11 +79,6 @@ class UniqueUrlValidator extends AbstractConstraintValidator
         return $urlTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\UrlTransfer $urlTransfer
-     *
-     * @return bool
-     */
     protected function isUrlChanged(UrlTransfer $urlTransfer): bool
     {
         $url = $urlTransfer->getUrlOrFail();

@@ -45,11 +45,6 @@ class MerchantProfileUrlCollectionFormType extends AbstractType
      */
     protected const URL_PATH_PATTERN = '#^([^\s\\\\]+)$#i';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -70,9 +65,6 @@ class MerchantProfileUrlCollectionFormType extends AbstractType
         $this->addUrlField($builder);
     }
 
-    /**
-     * @return string
-     */
     protected function getTemplatePath(): string
     {
         return static::TEMPLATE_PATH;

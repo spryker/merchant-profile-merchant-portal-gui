@@ -26,25 +26,16 @@ class UniqueMerchantReference extends Constraint
      */
     protected ?int $currentMerchantId;
 
-    /**
-     * @return string
-     */
     public function getTargets(): string
     {
         return static::CLASS_CONSTRAINT;
     }
 
-    /**
-     * @return string
-     */
     public function getMessage(): string
     {
         return static::VALIDATION_MESSAGE;
     }
 
-    /**
-     * @return int|null
-     */
     public function getCurrentMerchantId(): ?int
     {
         return $this->currentMerchantId;

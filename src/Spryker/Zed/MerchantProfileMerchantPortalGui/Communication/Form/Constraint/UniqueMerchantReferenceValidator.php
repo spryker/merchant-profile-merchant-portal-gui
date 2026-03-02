@@ -44,11 +44,6 @@ class UniqueMerchantReferenceValidator extends AbstractConstraintValidator
             ->addViolation();
     }
 
-    /**
-     * @param string $merchantReference
-     *
-     * @return \Generated\Shared\Transfer\MerchantTransfer|null
-     */
     protected function findMerchantByReference(string $merchantReference): ?MerchantTransfer
     {
         $merchantCriteriaTransfer = new MerchantCriteriaTransfer();

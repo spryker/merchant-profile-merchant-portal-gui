@@ -16,9 +16,6 @@ class HtmlTagWhitelistConstraint extends SymfonyConstraint
      */
     protected array $allowedHtmlTags = [];
 
-    /**
-     * @return string
-     */
     public function getTargets(): string
     {
         return static::CLASS_CONSTRAINT;

@@ -28,9 +28,6 @@ use Symfony\Component\Form\FormBuilderInterface;
  */
 class OnlineProfileMerchantProfileFormTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testOnlineProfileMerchantProfileFormTestExecutesOnlineProfileMerchantProfileFormExpanderPlugins(): void
     {
         // Assert

@@ -166,9 +166,6 @@ class MerchantProfileUrlCollectionDataTransformerTest extends Unit
         ];
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantProfileMerchantPortalGui\Communication\Form\Transformer\MerchantProfileUrlCollectionDataTransformer
-     */
     protected function createMerchantProfileUrlCollectionDataTransformer(): MerchantProfileUrlCollectionDataTransformer
     {
         return new MerchantProfileUrlCollectionDataTransformer();

@@ -74,12 +74,6 @@ class MerchantProfileUrlCollectionDataTransformer implements DataTransformerInte
         return $merchantProfileUrlCollection;
     }
 
-    /**
-     * @param string|null $url
-     * @param string $urlPrefix
-     *
-     * @return string
-     */
     protected function getUrlWithPrefix(?string $url, string $urlPrefix): string
     {
         if (!$url) {
@@ -91,12 +85,6 @@ class MerchantProfileUrlCollectionDataTransformer implements DataTransformerInte
         return $urlPrefix . $url;
     }
 
-    /**
-     * @param string|null $url
-     * @param string $urlPrefix
-     *
-     * @return bool
-     */
     protected function hasUrlPrefix(?string $url, string $urlPrefix): bool
     {
         if (!$url) {

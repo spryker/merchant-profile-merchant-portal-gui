@@ -42,12 +42,6 @@ class MerchantProfileFormDataProvider implements MerchantProfileFormDataProvider
      */
     protected MerchantProfileMerchantPortalGuiToLocaleFacadeInterface $localeFacade;
 
-    /**
-     * @param \Spryker\Zed\MerchantProfileMerchantPortalGui\MerchantProfileMerchantPortalGuiConfig $merchantProfileMerchantPortalGuiConfig
-     * @param \Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToMerchantFacadeInterface $merchantFacade
-     * @param \Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToGlossaryFacadeInterface $glossaryFacade
-     * @param \Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToLocaleFacadeInterface $localeFacade
-     */
     public function __construct(
         MerchantProfileMerchantPortalGuiConfig $merchantProfileMerchantPortalGuiConfig,
         MerchantProfileMerchantPortalGuiToMerchantFacadeInterface $merchantFacade,
@@ -60,11 +54,6 @@ class MerchantProfileFormDataProvider implements MerchantProfileFormDataProvider
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @param int $idMerchant
-     *
-     * @return \Generated\Shared\Transfer\MerchantTransfer|null
-     */
     public function findMerchantById(int $idMerchant): ?MerchantTransfer
     {
         $merchantCriteriaTransfer = new MerchantCriteriaTransfer();
@@ -82,11 +71,6 @@ class MerchantProfileFormDataProvider implements MerchantProfileFormDataProvider
         return $merchantTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantTransfer $merchantTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantTransfer
-     */
     protected function addMerchantProfileData(MerchantTransfer $merchantTransfer): MerchantTransfer
     {
         $merchantProfileTransfer = $merchantTransfer->getMerchantProfile() ?? new MerchantProfileTransfer();
@@ -97,11 +81,6 @@ class MerchantProfileFormDataProvider implements MerchantProfileFormDataProvider
         return $merchantTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantTransfer $merchantTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantTransfer
-     */
     protected function addInitialUrlCollection(MerchantTransfer $merchantTransfer): MerchantTransfer
     {
         $merchantProfileUrlCollection = $merchantTransfer->getUrlCollection();
@@ -144,11 +123,6 @@ class MerchantProfileFormDataProvider implements MerchantProfileFormDataProvider
         return $urlTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return string
-     */
     protected function getLocalizedUrlPrefix(LocaleTransfer $localeTransfer): string
     {
         $localeName = $localeTransfer->getLocaleNameOrFail();
@@ -158,11 +132,6 @@ class MerchantProfileFormDataProvider implements MerchantProfileFormDataProvider
         return '/' . $languageCode . '/' . $this->merchantProfileMerchantPortalGuiConfig->getMerchantUrlPrefix() . '/';
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantProfileTransfer $merchantProfileTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantProfileTransfer
-     */
     protected function addLocalizedGlossaryAttributes(MerchantProfileTransfer $merchantProfileTransfer): MerchantProfileTransfer
     {
         $merchantProfileGlossaryAttributeValues = new ArrayObject();
@@ -178,12 +147,6 @@ class MerchantProfileFormDataProvider implements MerchantProfileFormDataProvider
         return $merchantProfileTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantProfileTransfer $merchantProfileTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantProfileLocalizedGlossaryAttributesTransfer
-     */
     protected function addGlossaryAttributesByLocale(
         MerchantProfileTransfer $merchantProfileTransfer,
         LocaleTransfer $localeTransfer
@@ -197,12 +160,6 @@ class MerchantProfileFormDataProvider implements MerchantProfileFormDataProvider
         return $merchantProfileLocalizedGlossaryAttributesTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantProfileTransfer $merchantProfileTransfer
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantProfileGlossaryAttributeValuesTransfer
-     */
     protected function addGlossaryAttributeTranslations(
         MerchantProfileTransfer $merchantProfileTransfer,
         LocaleTransfer $localeTransfer
@@ -225,12 +182,6 @@ class MerchantProfileFormDataProvider implements MerchantProfileFormDataProvider
         return $merchantProfileGlossaryAttributeValuesTransfer;
     }
 
-    /**
-     * @param string $key
-     * @param \Generated\Shared\Transfer\LocaleTransfer $localeTransfer
-     *
-     * @return string|null
-     */
     protected function getLocalizedTranslationValue(string $key, LocaleTransfer $localeTransfer): ?string
     {
         if ($this->glossaryFacade->hasTranslation($key, $localeTransfer) === false) {
