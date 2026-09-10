@@ -38,8 +38,6 @@ class MerchantProfileMerchantPortalGuiConfig extends AbstractBundleConfig
 
     /**
      * @api
-     *
-     * @return string
      */
     public function getMerchantUrlPrefix(): string
     {

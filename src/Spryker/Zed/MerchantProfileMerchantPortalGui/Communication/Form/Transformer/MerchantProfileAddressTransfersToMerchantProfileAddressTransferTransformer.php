@@ -22,8 +22,6 @@ class MerchantProfileAddressTransfersToMerchantProfileAddressTransferTransformer
 {
     /**
      * @param \ArrayAccess<int, \Generated\Shared\Transfer\MerchantProfileAddressTransfer>|mixed $value
-     *
-     * @return \Generated\Shared\Transfer\MerchantProfileAddressTransfer
      */
     public function transform($value): MerchantProfileAddressTransfer
     {

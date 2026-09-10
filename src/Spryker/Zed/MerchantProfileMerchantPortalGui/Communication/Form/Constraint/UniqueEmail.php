@@ -16,9 +16,6 @@ class UniqueEmail extends SymfonyConstraint
      */
     public const OPTION_CURRENT_ID_MERCHANT = 'currentIdMerchant';
 
-    /**
-     * @var int|null
-     */
     protected ?int $currentIdMerchant;
 
     public function getCurrentIdMerchant(): ?int

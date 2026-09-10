@@ -11,9 +11,6 @@ use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfi
 
 class MerchantProfileAddressFormDataProvider implements MerchantProfileAddressFormDataProviderInterface
 {
-    /**
-     * @var \Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToCountryFacadeInterface
-     */
     protected MerchantProfileMerchantPortalGuiToCountryFacadeInterface $countryFacade;
 
     public function __construct(MerchantProfileMerchantPortalGuiToCountryFacadeInterface $countryFacade)

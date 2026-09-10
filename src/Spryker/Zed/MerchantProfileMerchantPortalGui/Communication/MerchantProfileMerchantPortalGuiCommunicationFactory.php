@@ -30,7 +30,6 @@ use Symfony\Component\Form\FormInterface;
 class MerchantProfileMerchantPortalGuiCommunicationFactory extends AbstractCommunicationFactory
 {
     /**
-     * @param \Generated\Shared\Transfer\MerchantTransfer|null $data
      * @param array<string, mixed> $options
      *
      * @return \Symfony\Component\Form\FormInterface<mixed>

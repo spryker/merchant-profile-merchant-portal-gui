@@ -133,4 +133,10 @@
         <property name="type" type="string"/>
     </transfer>
 
+    <transfer name="LocaleConditions">
+    </transfer>
+
+    <transfer name="LocaleCriteria">
+    </transfer>
+
 </transfers>

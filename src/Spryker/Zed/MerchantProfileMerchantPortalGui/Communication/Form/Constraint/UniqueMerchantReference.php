@@ -21,9 +21,6 @@ class UniqueMerchantReference extends Constraint
      */
     protected const VALIDATION_MESSAGE = 'Merchant reference is already used.';
 
-    /**
-     * @var int|null
-     */
     protected ?int $currentMerchantId;
 
     public function getTargets(): string

@@ -51,8 +51,6 @@ class MerchantProfileUrlCollectionDataTransformerTest extends Unit
      *
      * @param mixed $value
      * @param list<\Generated\Shared\Transfer\UrlTransfer> $expectedUrlTransfers
-     *
-     * @return void
      */
     public function testTransform($value, array $expectedUrlTransfers): void
     {
@@ -70,8 +68,6 @@ class MerchantProfileUrlCollectionDataTransformerTest extends Unit
      *
      * @param mixed $value
      * @param list<\Generated\Shared\Transfer\UrlTransfer> $expectedUrlTransfers
-     *
-     * @return void
      */
     public function testReverseTransform($value, array $expectedUrlTransfers): void
     {
@@ -174,8 +170,6 @@ class MerchantProfileUrlCollectionDataTransformerTest extends Unit
     /**
      * @param list<\Generated\Shared\Transfer\UrlTransfer> $expectedUrlTransfers
      * @param list<\Generated\Shared\Transfer\UrlTransfer> $actualUrlTransfers
-     *
-     * @return void
      */
     protected function assertSameUrlTransfers(array $expectedUrlTransfers, array $actualUrlTransfers): void
     {

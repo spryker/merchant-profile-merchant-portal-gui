@@ -7,10 +7,14 @@
 
 namespace Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade;
 
+use Generated\Shared\Transfer\LocaleCriteriaTransfer;
+
 interface MerchantProfileMerchantPortalGuiToLocaleFacadeInterface
 {
     /**
+     * Optionally scoped by the criteria's store names.
+     *
      * @return array<\Generated\Shared\Transfer\LocaleTransfer>
      */
-    public function getLocaleCollection(): array;
+    public function getLocaleCollection(?LocaleCriteriaTransfer $localeCriteriaTransfer = null): array;
 }

@@ -20,8 +20,6 @@ class UniqueMerchantReferenceValidator extends AbstractConstraintValidator
     /**
      * @param mixed|string $value
      * @param \Spryker\Zed\MerchantProfileMerchantPortalGui\Communication\Form\Constraint\UniqueMerchantReference $constraint
-     *
-     * @return void
      */
     public function validate($value, Constraint $constraint): void
     {

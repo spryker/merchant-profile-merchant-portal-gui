@@ -27,8 +27,6 @@ class ProfileController extends AbstractController
     protected const MESSAGE_MERCHANT_UPDATE_ERROR = 'The Profile form has errors.';
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
      * @return array<string, mixed>
      */
     public function indexAction(Request $request): array
@@ -55,8 +53,6 @@ class ProfileController extends AbstractController
 
     /**
      * @param \Symfony\Component\Form\FormInterface<mixed> $merchantForm
-     *
-     * @return void
      */
     protected function updateMerchant(FormInterface $merchantForm): void
     {
