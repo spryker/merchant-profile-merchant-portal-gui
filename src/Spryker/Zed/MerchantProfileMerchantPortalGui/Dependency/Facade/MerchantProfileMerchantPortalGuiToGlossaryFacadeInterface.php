@@ -15,4 +15,12 @@ interface MerchantProfileMerchantPortalGuiToGlossaryFacadeInterface
     public function hasTranslation(string $keyName, ?LocaleTransfer $localeTransfer = null): bool;
 
     public function getTranslation(string $keyName, LocaleTransfer $localeTransfer): TranslationTransfer;
+
+    /**
+     * @param array<string> $glossaryKeys
+     * @param array<\Generated\Shared\Transfer\LocaleTransfer> $localeTransfers
+     *
+     * @return array<\Generated\Shared\Transfer\TranslationTransfer>
+     */
+    public function getTranslationsByGlossaryKeysAndLocaleTransfers(array $glossaryKeys, array $localeTransfers): array;
 }

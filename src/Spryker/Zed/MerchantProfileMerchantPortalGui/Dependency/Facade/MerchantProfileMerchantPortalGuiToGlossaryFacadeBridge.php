@@ -34,4 +34,15 @@ class MerchantProfileMerchantPortalGuiToGlossaryFacadeBridge implements Merchant
     {
         return $this->glossaryFacade->getTranslation($keyName, $localeTransfer);
     }
+
+    /**
+     * @param array<string> $glossaryKeys
+     * @param array<\Generated\Shared\Transfer\LocaleTransfer> $localeTransfers
+     *
+     * @return array<\Generated\Shared\Transfer\TranslationTransfer>
+     */
+    public function getTranslationsByGlossaryKeysAndLocaleTransfers(array $glossaryKeys, array $localeTransfers): array
+    {
+        return $this->glossaryFacade->getTranslationsByGlossaryKeysAndLocaleTransfers($glossaryKeys, $localeTransfers);
+    }
 }

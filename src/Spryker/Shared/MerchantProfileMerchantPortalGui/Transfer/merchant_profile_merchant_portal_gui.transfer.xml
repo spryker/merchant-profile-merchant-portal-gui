@@ -106,6 +106,12 @@
     <transfer name="Translation">
         <property name="value" type="string"/>
         <property name="isActive" type="bool"/>
+        <property name="fkLocale" type="int"/>
+        <property name="glossaryKey" type="GlossaryKey" strict="true"/>
+    </transfer>
+
+    <transfer name="GlossaryKey">
+        <property name="key" type="string"/>
     </transfer>
 
     <transfer name="Url">

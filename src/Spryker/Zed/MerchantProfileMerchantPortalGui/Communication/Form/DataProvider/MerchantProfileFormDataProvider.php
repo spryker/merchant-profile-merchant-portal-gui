@@ -158,9 +158,15 @@ class MerchantProfileFormDataProvider implements MerchantProfileFormDataProvider
         array $localeTransfers
     ): MerchantProfileTransfer {
         $merchantProfileGlossaryAttributeValues = new ArrayObject();
+        $glossaryKeysIndexedByFieldName = $this->extractGlossaryKeysIndexedByFieldName($merchantProfileTransfer);
+        $activeTranslationValues = $this->getActiveTranslationValuesIndexedByGlossaryKeyAndIdLocale(
+            array_values(array_unique($glossaryKeysIndexedByFieldName)),
+            array_values($localeTransfers),
+        );
+
         foreach ($localeTransfers as $localeTransfer) {
             $merchantProfileGlossaryAttributeValues->append(
-                $this->addGlossaryAttributesByLocale($merchantProfileTransfer, $localeTransfer),
+                $this->addGlossaryAttributesByLocale($glossaryKeysIndexedByFieldName, $localeTransfer, $activeTranslationValues),
             );
         }
 
@@ -169,49 +175,81 @@ class MerchantProfileFormDataProvider implements MerchantProfileFormDataProvider
         return $merchantProfileTransfer;
     }
 
+    /**
+     * @param array<string, string> $glossaryKeysIndexedByFieldName
+     * @param array<string, array<int, string|null>> $activeTranslationValues
+     */
     protected function addGlossaryAttributesByLocale(
-        MerchantProfileTransfer $merchantProfileTransfer,
-        LocaleTransfer $localeTransfer
+        array $glossaryKeysIndexedByFieldName,
+        LocaleTransfer $localeTransfer,
+        array $activeTranslationValues
     ): MerchantProfileLocalizedGlossaryAttributesTransfer {
         $merchantProfileLocalizedGlossaryAttributesTransfer = new MerchantProfileLocalizedGlossaryAttributesTransfer();
         $merchantProfileLocalizedGlossaryAttributesTransfer->setLocale($localeTransfer);
         $merchantProfileLocalizedGlossaryAttributesTransfer->setMerchantProfileGlossaryAttributeValues(
-            $this->addGlossaryAttributeTranslations($merchantProfileTransfer, $localeTransfer),
+            $this->addGlossaryAttributeTranslations($glossaryKeysIndexedByFieldName, $localeTransfer, $activeTranslationValues),
         );
 
         return $merchantProfileLocalizedGlossaryAttributesTransfer;
     }
 
+    /**
+     * @param array<string, string> $glossaryKeysIndexedByFieldName
+     * @param array<string, array<int, string|null>> $activeTranslationValues
+     */
     protected function addGlossaryAttributeTranslations(
-        MerchantProfileTransfer $merchantProfileTransfer,
-        LocaleTransfer $localeTransfer
+        array $glossaryKeysIndexedByFieldName,
+        LocaleTransfer $localeTransfer,
+        array $activeTranslationValues
     ): MerchantProfileGlossaryAttributeValuesTransfer {
-        $merchantProfileGlossaryAttributeValuesTransfer = new MerchantProfileGlossaryAttributeValuesTransfer();
+        $merchantProfileGlossaryAttributeValuesData = [];
+        foreach ($glossaryKeysIndexedByFieldName as $fieldName => $glossaryKey) {
+            $merchantProfileGlossaryAttributeValuesData[$fieldName] = $activeTranslationValues[$glossaryKey][$localeTransfer->getIdLocaleOrFail()] ?? null;
+        }
 
-        $merchantProfileGlossaryAttributeValuesData = $merchantProfileGlossaryAttributeValuesTransfer->toArray(true, true);
+        return (new MerchantProfileGlossaryAttributeValuesTransfer())->fromArray($merchantProfileGlossaryAttributeValuesData);
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    protected function extractGlossaryKeysIndexedByFieldName(MerchantProfileTransfer $merchantProfileTransfer): array
+    {
         $merchantProfileData = $merchantProfileTransfer->toArray(true, true);
-        foreach ($merchantProfileGlossaryAttributeValuesData as $merchantProfileGlossaryAttributeFieldName => $glossaryAttributeValue) {
-            $merchantProfileGlossaryKey = $merchantProfileData[$merchantProfileGlossaryAttributeFieldName];
-            if (!$merchantProfileGlossaryKey) {
+        $glossaryKeysIndexedByFieldName = [];
+        foreach (array_keys((new MerchantProfileGlossaryAttributeValuesTransfer())->toArray(true, true)) as $fieldName) {
+            $glossaryKey = $merchantProfileData[$fieldName] ?? null;
+            if (!$glossaryKey) {
                 continue;
             }
 
-            $merchantProfileGlossaryAttributeValuesData[$merchantProfileGlossaryAttributeFieldName] = $this->getLocalizedTranslationValue($merchantProfileGlossaryKey, $localeTransfer);
+            $glossaryKeysIndexedByFieldName[$fieldName] = $glossaryKey;
         }
 
-        $merchantProfileGlossaryAttributeValuesTransfer->fromArray($merchantProfileGlossaryAttributeValuesData);
-
-        return $merchantProfileGlossaryAttributeValuesTransfer;
+        return $glossaryKeysIndexedByFieldName;
     }
 
-    protected function getLocalizedTranslationValue(string $key, LocaleTransfer $localeTransfer): ?string
+    /**
+     * @param array<string> $glossaryKeys
+     * @param array<\Generated\Shared\Transfer\LocaleTransfer> $localeTransfers
+     *
+     * @return array<string, array<int, string|null>>
+     */
+    protected function getActiveTranslationValuesIndexedByGlossaryKeyAndIdLocale(array $glossaryKeys, array $localeTransfers): array
     {
-        if ($this->glossaryFacade->hasTranslation($key, $localeTransfer) === false) {
-            return null;
+        if ($glossaryKeys === [] || $localeTransfers === []) {
+            return [];
         }
 
-        $translationTransfer = $this->glossaryFacade->getTranslation($key, $localeTransfer);
+        $activeTranslationValues = [];
+        foreach ($this->glossaryFacade->getTranslationsByGlossaryKeysAndLocaleTransfers($glossaryKeys, $localeTransfers) as $translationTransfer) {
+            if (!$translationTransfer->getIsActive()) {
+                continue;
+            }
 
-        return $translationTransfer->getIsActive() ? $translationTransfer->getValue() : null;
+            $activeTranslationValues[$translationTransfer->getGlossaryKeyOrFail()->getKeyOrFail()][$translationTransfer->getFkLocaleOrFail()] = $translationTransfer->getValue();
+        }
+
+        return $activeTranslationValues;
     }
 }
