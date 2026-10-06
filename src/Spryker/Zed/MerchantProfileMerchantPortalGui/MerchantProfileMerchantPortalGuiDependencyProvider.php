@@ -10,7 +10,6 @@ namespace Spryker\Zed\MerchantProfileMerchantPortalGui;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToCountryFacadeBridge;
-use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToGlossaryFacadeBridge;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToLocaleFacadeBridge;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToMerchantFacadeBridge;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToMerchantUserFacadeBridge;
@@ -92,7 +91,7 @@ class MerchantProfileMerchantPortalGuiDependencyProvider extends AbstractBundleD
     protected function addGlossaryFacade(Container $container): Container
     {
         $container->set(static::FACADE_GLOSSARY, function (Container $container) {
-            return new MerchantProfileMerchantPortalGuiToGlossaryFacadeBridge($container->getLocator()->glossary()->facade());
+            return $container->getLocator()->glossary()->facade();
         });
 
         return $container;

@@ -132,6 +132,7 @@ class OnlineProfileMerchantProfileForm extends AbstractType
             'label' => false,
             'required' => true,
             'allow_delete' => true,
+            'prototype' => false,
             'entry_options' => [
                 'label' => false,
                 'data_class' => UrlTransfer::class,
@@ -232,6 +233,7 @@ class OnlineProfileMerchantProfileForm extends AbstractType
             'entry_type' => MerchantProfileLocalizedGlossaryAttributesFormType::class,
             'allow_add' => true,
             'allow_delete' => true,
+            'prototype' => false,
             'property_path' => 'merchantProfile.merchantProfileLocalizedGlossaryAttributes',
         ]);
 

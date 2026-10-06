@@ -18,8 +18,8 @@ use Generated\Shared\Transfer\MerchantProfileTransfer;
 use Generated\Shared\Transfer\MerchantTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Generated\Shared\Transfer\TranslationTransfer;
+use Spryker\Zed\Glossary\Business\GlossaryFacadeInterface;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Communication\Form\DataProvider\MerchantProfileFormDataProvider;
-use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToGlossaryFacadeInterface;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToLocaleFacadeInterface;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToMerchantFacadeInterface;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\MerchantProfileMerchantPortalGuiConfig;
@@ -102,7 +102,7 @@ class MerchantProfileFormDataProviderTest extends Unit
             ],
         );
 
-        $glossaryFacadeMock = Stub::makeEmpty(MerchantProfileMerchantPortalGuiToGlossaryFacadeInterface::class);
+        $glossaryFacadeMock = Stub::makeEmpty(GlossaryFacadeInterface::class);
 
         $merchantProfileFormDataProvider = new MerchantProfileFormDataProvider(
             new MerchantProfileMerchantPortalGuiConfig(),
@@ -138,7 +138,7 @@ class MerchantProfileFormDataProviderTest extends Unit
         $localeFacadeMock = Stub::makeEmpty(MerchantProfileMerchantPortalGuiToLocaleFacadeInterface::class, [
             'getLocaleCollection' => [$localeTransferDe, $localeTransferEn],
         ]);
-        $glossaryFacadeMock = $this->createMock(MerchantProfileMerchantPortalGuiToGlossaryFacadeInterface::class);
+        $glossaryFacadeMock = $this->createMock(GlossaryFacadeInterface::class);
 
         // Expect
         $glossaryFacadeMock->expects($this->never())->method('hasTranslation');

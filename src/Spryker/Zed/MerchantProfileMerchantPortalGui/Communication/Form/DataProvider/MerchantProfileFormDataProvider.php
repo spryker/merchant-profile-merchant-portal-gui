@@ -17,7 +17,7 @@ use Generated\Shared\Transfer\MerchantProfileLocalizedGlossaryAttributesTransfer
 use Generated\Shared\Transfer\MerchantProfileTransfer;
 use Generated\Shared\Transfer\MerchantTransfer;
 use Generated\Shared\Transfer\UrlTransfer;
-use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToGlossaryFacadeInterface;
+use Spryker\Zed\Glossary\Business\GlossaryFacadeInterface;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToLocaleFacadeInterface;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToMerchantFacadeInterface;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\MerchantProfileMerchantPortalGuiConfig;
@@ -28,14 +28,14 @@ class MerchantProfileFormDataProvider implements MerchantProfileFormDataProvider
 
     protected MerchantProfileMerchantPortalGuiToMerchantFacadeInterface $merchantFacade;
 
-    protected MerchantProfileMerchantPortalGuiToGlossaryFacadeInterface $glossaryFacade;
+    protected GlossaryFacadeInterface $glossaryFacade;
 
     protected MerchantProfileMerchantPortalGuiToLocaleFacadeInterface $localeFacade;
 
     public function __construct(
         MerchantProfileMerchantPortalGuiConfig $merchantProfileMerchantPortalGuiConfig,
         MerchantProfileMerchantPortalGuiToMerchantFacadeInterface $merchantFacade,
-        MerchantProfileMerchantPortalGuiToGlossaryFacadeInterface $glossaryFacade,
+        GlossaryFacadeInterface $glossaryFacade,
         MerchantProfileMerchantPortalGuiToLocaleFacadeInterface $localeFacade
     ) {
         $this->merchantFacade = $merchantFacade;

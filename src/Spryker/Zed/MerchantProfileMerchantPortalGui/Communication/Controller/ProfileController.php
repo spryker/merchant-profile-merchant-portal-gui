@@ -33,10 +33,7 @@ class ProfileController extends AbstractController
     {
         $merchantUserTransfer = $this->getFactory()->getMerchantUserFacade()->getCurrentMerchantUser();
         $storeTransfers = $merchantUserTransfer->getMerchantOrFail()->getStoreRelationOrFail()->getStores();
-        $idMerchant = $merchantUserTransfer->getIdMerchantOrFail();
-
-        $merchantProfileFormDataProvider = $this->getFactory()->createMerchantProfileFormDataProvider();
-        $merchantTransfer = $merchantProfileFormDataProvider->findMerchantById($idMerchant);
+        $merchantTransfer = $merchantUserTransfer->getMerchant();
 
         $merchantProfileForm = $this->getFactory()->createMerchantProfileForm($merchantTransfer);
         $merchantProfileForm->handleRequest($request);

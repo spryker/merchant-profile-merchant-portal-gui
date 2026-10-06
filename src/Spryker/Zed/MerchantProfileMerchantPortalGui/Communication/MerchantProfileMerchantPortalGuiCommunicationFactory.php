@@ -8,6 +8,7 @@
 namespace Spryker\Zed\MerchantProfileMerchantPortalGui\Communication;
 
 use Generated\Shared\Transfer\MerchantTransfer;
+use Spryker\Zed\Glossary\Business\GlossaryFacadeInterface;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Communication\Form\Constraint\UniqueUrl;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Communication\Form\DataProvider\MerchantProfileAddressFormDataProvider;
@@ -16,7 +17,6 @@ use Spryker\Zed\MerchantProfileMerchantPortalGui\Communication\Form\DataProvider
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Communication\Form\DataProvider\MerchantProfileFormDataProviderInterface;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Communication\Form\MerchantProfileForm;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToCountryFacadeInterface;
-use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToGlossaryFacadeInterface;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToLocaleFacadeInterface;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToMerchantFacadeInterface;
 use Spryker\Zed\MerchantProfileMerchantPortalGui\Dependency\Facade\MerchantProfileMerchantPortalGuiToMerchantUserFacadeInterface;
@@ -69,7 +69,7 @@ class MerchantProfileMerchantPortalGuiCommunicationFactory extends AbstractCommu
         return $this->getProvidedDependency(MerchantProfileMerchantPortalGuiDependencyProvider::FACADE_MERCHANT_USER);
     }
 
-    public function getGlossaryFacade(): MerchantProfileMerchantPortalGuiToGlossaryFacadeInterface
+    public function getGlossaryFacade(): GlossaryFacadeInterface
     {
         return $this->getProvidedDependency(MerchantProfileMerchantPortalGuiDependencyProvider::FACADE_GLOSSARY);
     }
