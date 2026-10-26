@@ -140,9 +140,11 @@
     </transfer>
 
     <transfer name="LocaleConditions">
+        <property name="storeNames" type="string[]" singular="storeName"/>
     </transfer>
 
     <transfer name="LocaleCriteria">
+        <property name="localeConditions" type="LocaleConditions"/>
     </transfer>
 
 </transfers>
